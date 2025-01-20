@@ -1,0 +1,77 @@
+{
+  "currentUser": {
+    "image": {
+      "png": "./images/avatars/image-juliusomo.png"
+    },
+    "username": "juliusomo"
+  },
+  "comments": [
+    {
+      "id": 1,
+      "content": "Amazing project! Well done!",
+      "createdAt": "1 month ago",
+      "score": 15,
+      "user": {
+        "image": {
+          "png": "./images/avatars/image-amyrobson.png"
+        },
+        "username": "amyrobson"
+      },
+      "replies": [
+        {
+          "id": 3,
+          "content": "I completely agree with this, the design is fantastic!",
+          "createdAt": "2 weeks ago",
+          "score": 5,
+          "replyingTo": "amyrobson",
+          "user": {
+            "image": {
+              "png": "./images/avatars/image-ramsesmiron.png"
+            },
+            "username": "ramsesmiron"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "content": "Woah, your project looks awesome! How long have you been coding?",
+      "createdAt": "2 weeks ago",
+      "score": 10,
+      "user": {
+        "image": {
+          "png": "./images/avatars/image-maxblagun.png"
+        },
+        "username": "maxblagun"
+      },
+      "replies": [
+        {
+          "id": 4,
+          "content": "I'd recommend focusing on core JavaScript before diving into frameworks.",
+          "createdAt": "1 week ago",
+          "score": 3,
+          "replyingTo": "maxblagun",
+          "user": {
+            "image": {
+              "png": "./images/avatars/image-juliusomo.png"
+            },
+            "username": "juliusomo"
+          }
+        },
+        {
+          "id": 5,
+          "content": "That's great advice! I'll follow your suggestion.",
+          "createdAt": "3 days ago",
+          "score": 2,
+          "replyingTo": "juliusomo",
+          "user": {
+            "image": {
+              "png": "./images/avatars/image-amyrobson.png"
+            },
+            "username": "amyrobson"
+          }
+        }
+      ]
+    }
+  ]
+}
