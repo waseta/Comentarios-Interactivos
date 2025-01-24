@@ -1,0 +1,106 @@
+{
+    "currentUser": {
+        "username": "user_5",
+        "image": {
+            "png": "./images/avatars/image-5.png"
+        }
+    },
+    "comments": [
+        {
+            "id": 1,
+            "content": "Amazing project! Well done!",
+            "createdAt": "26 days ago",
+            "score": 15,
+            "user": {
+                "username": "user_1",
+                "image": {
+                    "png": "./images/avatars/image-1.png"
+                }
+            },
+            "replies": [
+                {
+                    "id": 11,
+                    "content": "I completely agree with this, the design is fantastic!",
+                    "createdAt": "16 days ago",
+                    "score": 5,
+                    "replyingTo": "user_1",
+                    "user": {
+                        "username": "user_2",
+                        "image": {
+                            "png": "./images/avatars/image-2.png"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "content": "Woah, your project looks awesome! How long have you been coding?",
+            "createdAt": "25 days ago",
+            "score": 10,
+            "user": {
+                "username": "user_2",
+                "image": {
+                    "png": "./images/avatars/image-2.png"
+                }
+            },
+            "replies": [
+                {
+                    "id": 21,
+                    "content": "I'd recommend focusing on core JavaScript before diving into frameworks.",
+                    "createdAt": "7 days ago",
+                    "score": 3,
+                    "replyingTo": "user_2",
+                    "user": {
+                        "username": "user_3",
+                        "image": {
+                            "png": "./images/avatars/image-3.png"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "content": "Great work! How did you manage responsiveness?",
+            "createdAt": "20 days ago",
+            "score": 8,
+            "user": {
+                "username": "user_3",
+                "image": {
+                    "png": "./images/avatars/image-3.png"
+                }
+            },
+            "replies": []
+        },
+        {
+            "id": 4,
+            "content": "Impressive design! Can you share some tips?",
+            "createdAt": "8 days ago",
+            "score": 12,
+            "user": {
+                "username": "user_4",
+                "image": {
+                    "png": "./images/avatars/image-4.png"
+                }
+            },
+            "replies": [
+                {
+                    "id": 41,
+                    "content": "Sure! Focus on flexbox and grid for layouts.",
+                    "createdAt": "2 days ago",
+                    "score": 7,
+                    "replyingTo": "user_4",
+                    "user": {
+                        "username": "user_1",
+                        "image": {
+                            "png": "./images/avatars/image-1.png"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+
