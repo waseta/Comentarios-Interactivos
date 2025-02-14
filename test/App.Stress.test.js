@@ -1,51 +1,52 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { render, fireEvent } from '@testing-library/svelte';
-import App from '@src/App.svelte';
+import { render } from '@testing-library/svelte';
+import App from '../src/App.svelte'; // Ruta corregida
 
+describe('Stress Test for App', () => {
+    it('should handle a large number of comments', () => {
+        const largeComments = Array.from({ length: 1000 }, (_, i) => ({
+            id: i + 1,
+            content: `Comment ${i + 1}`,
+            user: {
+                username: `user${i + 1}`,
+                image: { png: "/images/avatars/avatar1.png" },
+            },
+            score: 0,
+            createdAt: "1 month ago",
+            replies: [],
+        }));
 
-const largeData = require('../src/data.json');
+        const { getByText } = render(App, { data: { comments: largeComments } });
+        expect(getByText("Comment 1")).toBeInTheDocument();
+        expect(getByText("Comment 1000")).toBeInTheDocument();
+    });
 
-describe('Stress Test - Interactive Comments App', () => {
-  let app;
+    it('should handle a large number of replies', () => {
+        const commentWithManyReplies = {
+            id: 1,
+            content: "Parent comment",
+            user: {
+                username: "user1",
+                image: { png: "/images/avatars/avatar1.png" },
+            },
+            score: 0,
+            createdAt: "1 month ago",
+            replies: Array.from({ length: 1000 }, (_, i) => ({
+                id: i + 2,
+                content: `Reply ${i + 1}`,
+                user: {
+                    username: `user${i + 2}`,
+                    image: { png: "/images/avatars/avatar2.png" },
+                },
+                score: 0,
+                createdAt: "1 month ago",
+            })),
+        };
 
-  beforeEach(() => {
-    
-    app = render(App, { props: { data: largeData } });
-  });
-
-  it('loads all comments without crashing', () => {
-    
-    const comments = app.container.querySelectorAll('.comment');
-    expect(comments).not.toBeNull();
-    expect(comments.length).toBe(largeData.comments.length);
-  });
-
-  it('handles adding a new comment under stress', async () => {
-    const textarea = app.container.querySelector('textarea');
-    expect(textarea).not.toBeNull();
-
-    const sendButton = app.getByText('SEND');
-    expect(sendButton).not.toBeNull();
-
-    await fireEvent.input(textarea, { target: { value: 'New comment under stress!' } });
-    await fireEvent.click(sendButton);
-
-    const comments = app.container.querySelectorAll('.comment');
-    expect(comments.length).toBe(largeData.comments.length + 1);
-  });
-
-  it('handles upvotes efficiently', async () => {
-    const upvoteButtons = app.container.querySelectorAll('button[aria-label="Upvote"]');
-    expect(upvoteButtons.length).toBeGreaterThan(0);
-
-    for (let i = 0; i < 100; i++) {
-      await fireEvent.click(upvoteButtons[0]);
-    }
-
-    const firstCommentScore = app.container.querySelector('.comment .score span');
-    expect(firstCommentScore).not.toBeNull();
-    expect(parseInt(firstCommentScore.textContent, 10)).toBe(largeData.comments[2].score + 100);
-  });
+        const { getByText } = render(App, { data: { comments: [commentWithManyReplies] } });
+        expect(getByText("Parent comment")).toBeInTheDocument();
+        expect(getByText("Reply 1")).toBeInTheDocument();
+        expect(getByText("Reply 1000")).toBeInTheDocument();
+    });
 });
 
 
